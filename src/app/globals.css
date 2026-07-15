@@ -1,26 +1,265 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   RZRD TECH — DESIGN SYSTEM
+   Apple-inspired "Liquid Glass". Light, spacious, premium.
+   ============================================================ */
+
+@theme {
+  /* Type */
+  --font-sans: var(--font-geist-sans), "Inter", ui-sans-serif, system-ui,
+    -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
+
+  /* Palette — controlled, no saturated colors */
+  --color-canvas: #fbfbfd;
+  --color-surface: #f5f5f7;
+  --color-line: #d1d1d6;
+  --color-ink: #1d1d1f;
+  --color-ink-soft: #52525b;
+  --color-ink-faint: #86868b;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Very subtle translucent blue accent */
+  --color-accent: #0071e3;
+  --color-accent-soft: #5aa9ff;
+
+  /* Radii — generous, physical */
+  --radius-xs: 0.625rem;
+  --radius-sm: 0.875rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 1.75rem;
+  --radius-xl: 2.25rem;
+  --radius-2xl: 2.75rem;
+
+  /* Layered soft shadows */
+  --shadow-glass: 0 1px 1px rgba(0, 0, 0, 0.02),
+    0 8px 24px -12px rgba(17, 24, 39, 0.14),
+    0 2px 6px -2px rgba(17, 24, 39, 0.06);
+  --shadow-float: 0 30px 60px -20px rgba(17, 24, 39, 0.18),
+    0 12px 24px -12px rgba(17, 24, 39, 0.1);
+  --shadow-glow: 0 0 0 1px rgba(255, 255, 255, 0.6) inset,
+    0 20px 60px -24px rgba(0, 113, 227, 0.35);
+
+  /* Motion easings */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ---------------------------------------------------------------
+   Base
+--------------------------------------------------------------- */
+@layer base {
+  * {
+    border-color: color-mix(in oklab, var(--color-line) 60%, transparent);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    letter-spacing: -0.011em;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-accent) 22%, transparent);
+    color: var(--color-ink);
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------------------------------------------------------------
+   Utilities & components
+--------------------------------------------------------------- */
+@layer components {
+  /* The core liquid-glass surface */
+  .glass {
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--color-white) 78%, transparent),
+      color-mix(in oklab, var(--color-white) 55%, transparent)
+    );
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-strong {
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--color-white) 92%, transparent),
+      color-mix(in oklab, var(--color-white) 74%, transparent)
+    );
+    backdrop-filter: blur(36px) saturate(190%);
+    -webkit-backdrop-filter: blur(36px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* Hairline gradient border that reads like a glass reflection */
+  .glass-sheen {
+    position: relative;
+    isolation: isolate;
+  }
+  .glass-sheen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0) 42%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0.4)
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Text helpers */
+  .text-muted {
+    color: var(--color-ink-soft);
+  }
+  .text-faint {
+    color: var(--color-ink-faint);
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      180deg,
+      var(--color-ink) 30%,
+      color-mix(in oklab, var(--color-ink) 55%, var(--color-ink-faint))
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Fluid display headings */
+  .text-display {
+    font-size: clamp(2.6rem, 6.2vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    font-weight: 600;
+  }
+  .text-h2 {
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+    line-height: 1.03;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+  }
+  .text-eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink-faint);
+  }
+
+  /* Section rhythm — everything must breathe */
+  .section {
+    padding-block: clamp(5rem, 12vw, 9.5rem);
+  }
+
+  .container-page {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  /* Grid backdrop used behind hero */
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        rgba(17, 24, 39, 0.045) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(17, 24, 39, 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .mask-fade-edges {
+    -webkit-mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 45%,
+      #000 55%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 45%,
+      #000 55%,
+      transparent 100%
+    );
+  }
 }
+
+/* ---------------------------------------------------------------
+   Keyframes — subtle, premium
+--------------------------------------------------------------- */
+@keyframes float-slow {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -18px, 0) rotate(1.5deg); }
+}
+@keyframes float-slower {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, 22px, 0); }
+}
+@keyframes aurora-drift {
+  0% { transform: translate3d(-6%, -4%, 0) scale(1); }
+  50% { transform: translate3d(6%, 4%, 0) scale(1.08); }
+  100% { transform: translate3d(-6%, -4%, 0) scale(1); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.animate-float-slow { animation: float-slow 9s var(--ease-in-out-soft) infinite; }
+.animate-float-slower { animation: float-slower 12s var(--ease-in-out-soft) infinite; }
+.animate-aurora { animation: aurora-drift 20s var(--ease-in-out-soft) infinite; }
+.animate-spin-slow { animation: spin-slow 32s linear infinite; }
