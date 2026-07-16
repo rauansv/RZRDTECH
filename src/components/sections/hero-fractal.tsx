@@ -60,7 +60,7 @@ export function HeroFractal() {
         >
           <div className="relative aspect-[4/3] sm:aspect-video">
             <Image
-              src="/hero/scene.webp"
+              src={heroFractal.image}
               alt="Cristal facetado iridescente sobre uma fita roxa — matéria digital RZRD"
               fill
               priority

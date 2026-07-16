@@ -5,21 +5,15 @@
  * (mantém a fronteira server → client serializável).
  */
 
-export const site = {
-  name: "RZRD Tech",
-  domain: "rzrd.tech",
-  url: "https://rzrd.tech",
-  tagline: "Tecnologia • Inovação • Resultados",
-  description:
-    "A RZRD Tech é uma software house premium que cria softwares sob medida, soluções de IA, plataformas web, aplicativos mobile e sistemas corporativos para resolver problemas reais de negócio.",
-  slogan: "Desenvolvemos software que move negócios para a frente.",
-  email: "contato@rzrd.tech",
-  socials: {
-    instagram: "https://instagram.com/rzrd.tech",
-    linkedin: "https://linkedin.com/company/rzrd-tech",
-    github: "https://github.com/rzrd-tech",
-  },
-} as const;
+import content from "../../content/site.json";
+
+/**
+ * O conteúdo editável vive em content/site.json e é gerenciado pelo
+ * painel /admin (rodando localmente). Este módulo re-exporta os dados
+ * com as mesmas formas que os componentes já consomem.
+ */
+
+export const site = content.site;
 
 export const nav = [
   { label: "Sobre", href: "#about" },
@@ -168,40 +162,7 @@ export type Project = {
   accent: string; // stops de gradiente para a capa abstrata
 };
 
-export const projects: Project[] = [
-  {
-    title: "Atlas Commerce",
-    category: "Plataforma de E-commerce",
-    description:
-      "Uma plataforma de commerce headless que movimenta milhões por mês com páginas em menos de um segundo.",
-    tech: ["Next.js", "PostgreSQL", "Stripe", "AWS"],
-    accent: "from-[#c9dcff] via-[#eaf1ff] to-[#f5f5f7]",
-  },
-  {
-    title: "Nova Intelligence",
-    category: "SaaS de IA",
-    description:
-      "Um copiloto de IA que automatiza operações de back-office para times financeiros corporativos.",
-    tech: ["React", "OpenAI", "Node.js", "Supabase"],
-    accent: "from-[#d8d4ff] via-[#eeecff] to-[#f5f5f7]",
-  },
-  {
-    title: "Pulse Analytics",
-    category: "Dashboard de Dados",
-    description:
-      "Analytics em tempo real para times de operações — clareza sobre milhares de sinais ao vivo.",
-    tech: ["Next.js", "TypeScript", "Cloudflare"],
-    accent: "from-[#c7efe4] via-[#e9f9f3] to-[#f5f5f7]",
-  },
-  {
-    title: "Meridian Health",
-    category: "Aplicativo Mobile",
-    description:
-      "Uma experiência mobile pronta para HIPAA que conecta pacientes e profissionais de saúde com fluidez.",
-    tech: ["React Native", "Node.js", "AWS"],
-    accent: "from-[#ffe0d6] via-[#fff0ea] to-[#f5f5f7]",
-  },
-];
+export const projects: Project[] = content.projects;
 
 export type Differential = {
   title: string;
@@ -279,23 +240,15 @@ export const stats = [
 ------------------------------------------------------------- */
 
 export const heroFractal = {
-  // "MATÉRIA DIGITAL" — eco do "FRACTAL MATTER" do template.
-  // O "A" de DIGITAL é substituído por um triângulo azul, como no original.
-  line1: "MATÉRIA",
-  line2Pre: "DIGIT",
-  line2Post: "L",
-  subtitle: [
-    "Damos forma ao digital: software sob medida,",
-    "inteligência artificial e plataformas em nuvem",
-    "para negócios que constroem o futuro.",
-  ],
-  cta: { label: "Solicitar Orçamento", href: "#contact" },
+  // "MATÉRIA DIGITAL" — o "A" de DIGITAL vira um triângulo azul no hero.
+  line1: content.hero.line1,
+  line2Pre: content.hero.line2Pre,
+  line2Post: content.hero.line2Post,
+  subtitle: content.hero.subtitle,
+  image: content.hero.image,
+  cta: { label: content.hero.ctaLabel, href: "#contact" },
   bar: {
     label: "Nossos Pilares",
-    items: [
-      { title: "IA Aplicada", sub: "Sistemas que aprendem e escalam" },
-      { title: "Web & Apps", sub: "Plataformas de alta performance" },
-      { title: "Cloud & Automação", sub: "Infra que se opera sozinha" },
-    ],
+    items: content.hero.pillars,
   },
-} as const;
+};
