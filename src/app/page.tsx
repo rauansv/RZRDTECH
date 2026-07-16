@@ -1,4 +1,4 @@
-import { Hero } from "@/components/sections/hero";
+import { HeroFractal } from "@/components/sections/hero-fractal";
 import { About } from "@/components/sections/about";
 import { Services } from "@/components/sections/services";
 import { Process } from "@/components/sections/process";
@@ -31,7 +31,7 @@ export default function Home() {
         // Structured data for rich search results.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Hero />
+      <HeroFractal />
       <About />
       <Services />
       <Process />

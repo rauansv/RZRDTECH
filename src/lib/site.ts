@@ -271,3 +271,31 @@ export const stats = [
   { value: "24/7", label: "Monitoramento" },
   { value: "∞", label: "Escalabilidade" },
 ] as const;
+
+/* -------------------------------------------------------------
+   Hero cinematográfico (template: Daily Hero 33 / Arkkhe)
+   A cena de fundo (public/hero/scene.webp) foi extraída do Figma
+   e limpa — toda a UI é reconstruída em código por cima dela.
+------------------------------------------------------------- */
+
+export const heroFractal = {
+  // "MATÉRIA DIGITAL" — eco do "FRACTAL MATTER" do template.
+  // O "A" de DIGITAL é substituído por um triângulo azul, como no original.
+  line1: "MATÉRIA",
+  line2Pre: "DIGIT",
+  line2Post: "L",
+  subtitle: [
+    "Damos forma ao digital: software sob medida,",
+    "inteligência artificial e plataformas em nuvem",
+    "para negócios que constroem o futuro.",
+  ],
+  cta: { label: "Solicitar Orçamento", href: "#contact" },
+  bar: {
+    label: "Nossos Pilares",
+    items: [
+      { title: "IA Aplicada", sub: "Sistemas que aprendem e escalam" },
+      { title: "Web & Apps", sub: "Plataformas de alta performance" },
+      { title: "Cloud & Automação", sub: "Infra que se opera sozinha" },
+    ],
+  },
+} as const;

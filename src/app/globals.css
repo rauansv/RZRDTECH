@@ -233,6 +233,31 @@
       transparent 100%
     );
   }
+
+  /* -------------------------------------------------------------
+     Cinematic hero (template: Daily Hero 33 / Arkkhe)
+     The hero is a fixed 16:9 "stage" measured in container units,
+     so every overlaid element scales in perfect sync with the
+     background scene.
+  ------------------------------------------------------------- */
+  .hero-stage {
+    container-type: inline-size;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .font-hero-display {
+    font-family: var(--font-archivo), "Archivo", ui-sans-serif, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    line-height: 0.92;
+    text-transform: uppercase;
+  }
+  .font-hero-ui {
+    font-family: var(--font-quicksand), "Quicksand", ui-sans-serif, sans-serif;
+  }
 }
 
 /* ---------------------------------------------------------------
