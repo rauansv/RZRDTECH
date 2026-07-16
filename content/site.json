@@ -1,0 +1,90 @@
+{
+  "site": {
+    "name": "RZRD Tech",
+    "domain": "rzrd.tech",
+    "url": "https://rzrd.tech",
+    "tagline": "Tecnologia • Inovação • Resultados",
+    "description": "A RZRD Tech é uma software house premium que cria softwares sob medida, soluções de IA, plataformas web, aplicativos mobile e sistemas corporativos para resolver problemas reais de negócio.",
+    "slogan": "Desenvolvemos software que move negócios para a frente.",
+    "email": "contato@rzrd.tech",
+    "socials": {
+      "instagram": "https://instagram.com/rzrd.tech",
+      "linkedin": "https://linkedin.com/company/rzrd-tech",
+      "github": "https://github.com/rzrd-tech"
+    }
+  },
+  "hero": {
+    "line1": "MATÉRIA",
+    "line2Pre": "DIGIT",
+    "line2Post": "L",
+    "subtitle": [
+      "Damos forma ao digital: software sob medida,",
+      "inteligência artificial e plataformas em nuvem",
+      "para negócios que constroem o futuro."
+    ],
+    "ctaLabel": "Solicitar Orçamento",
+    "image": "/hero/scene-1784220707859.png",
+    "pillars": [
+      {
+        "title": "IA Aplicada",
+        "sub": "Sistemas que aprendem e escalam"
+      },
+      {
+        "title": "Web & Apps",
+        "sub": "Plataformas de alta performance"
+      },
+      {
+        "title": "Cloud & Automação",
+        "sub": "Infra que se opera sozinha"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "title": "Atlas Commerce",
+      "category": "Plataforma de E-commerce",
+      "description": "Uma plataforma de commerce headless que movimenta milhões por mês com páginas em menos de um segundo.",
+      "tech": [
+        "Next.js",
+        "PostgreSQL",
+        "Stripe",
+        "AWS"
+      ],
+      "accent": "from-[#c9dcff] via-[#eaf1ff] to-[#f5f5f7]"
+    },
+    {
+      "title": "Nova Intelligence",
+      "category": "SaaS de IA",
+      "description": "Um copiloto de IA que automatiza operações de back-office para times financeiros corporativos.",
+      "tech": [
+        "React",
+        "OpenAI",
+        "Node.js",
+        "Supabase"
+      ],
+      "accent": "from-[#d8d4ff] via-[#eeecff] to-[#f5f5f7]"
+    },
+    {
+      "title": "Pulse Analytics",
+      "category": "Dashboard de Dados",
+      "description": "Analytics em tempo real para times de operações — clareza sobre milhares de sinais ao vivo.",
+      "tech": [
+        "Next.js",
+        "TypeScript",
+        "Cloudflare"
+      ],
+      "accent": "from-[#c7efe4] via-[#e9f9f3] to-[#f5f5f7]"
+    },
+    {
+      "title": "Meridian Health",
+      "category": "Aplicativo Mobile",
+      "description": "Uma experiência mobile pronta para HIPAA que conecta pacientes e profissionais de saúde com fluidez.",
+      "tech": [
+        "React Native",
+        "Node.js",
+        "AWS"
+      ],
+      "accent": "from-[#ffe0d6] via-[#fff0ea] to-[#f5f5f7]"
+    }
+  ]
+}
